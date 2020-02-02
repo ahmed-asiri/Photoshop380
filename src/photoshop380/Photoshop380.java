@@ -17,7 +17,7 @@ public class Photoshop380 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+        new MainPage().setVisible(true);
     }
     
 }
