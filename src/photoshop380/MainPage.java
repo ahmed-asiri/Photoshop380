@@ -10,7 +10,6 @@ package photoshop380;
  * @author ia7ma
  */
 public class MainPage extends javax.swing.JFrame {
-
     /**
      * Creates new form MainPage
      */
