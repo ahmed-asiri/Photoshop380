@@ -18,6 +18,10 @@ public class PictureUI extends javax.swing.JFrame {
     String fileName;
     Picture pic;
     ImageIcon icon;
+    int ScropX;
+    int ScropY;
+    int EcropX;
+    int EcropY;
     /**
      * Creates new form Picture
      */
@@ -27,6 +31,7 @@ public class PictureUI extends javax.swing.JFrame {
         fileName = null;
         icon = null;
         pic = null;
+        
         redSlider.enable(false);
         greenSlider.enable(false);
         blueSlider.enable(false);
@@ -60,6 +65,9 @@ public class PictureUI extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         Browse = new javax.swing.JButton();
         Reset = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -174,22 +182,33 @@ public class PictureUI extends javax.swing.JFrame {
 
         picView.setBackground(new java.awt.Color(51, 51, 51));
         picView.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        picView.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                picViewMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                picViewMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                picViewMouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(picView, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(picView, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(picView, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(picView, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
@@ -229,14 +248,44 @@ public class PictureUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel5.setBackground(new java.awt.Color(153, 153, 153));
+
+        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton1.setText("Rotate");
+
+        jButton2.setText("jButton2");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -247,6 +296,8 @@ public class PictureUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -286,7 +337,7 @@ public class PictureUI extends javax.swing.JFrame {
             greenSlider.enable(true);
             blueSlider.enable(true);
             reset();
-
+            
         }
     }//GEN-LAST:event_BrowseActionPerformed
 
@@ -301,6 +352,7 @@ public void reset(){
         greenSlider.setValue(getAverageGreen());
         blueSlider.setValue(getAverageBlue());
         pic = new Picture(fileName);
+        
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
 }
@@ -332,6 +384,38 @@ public void reset(){
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
     }//GEN-LAST:event_blueSliderStateChanged
+
+    private void picViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_picViewMouseClicked
+        // TODO add your handling code here:
+     
+    }//GEN-LAST:event_picViewMouseClicked
+
+    private void picViewMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_picViewMouseReleased
+        // TODO add your handling code here:
+        
+        EcropX =   evt.getX() - ((500 - pic.getWidth())/2); // we apply this formula to selecting the pics pixels correctly.
+        EcropY =  evt.getY() - ((500 - pic.getHeight())/2);
+        // if he crop the picture in reverse.
+        replaceStartPoint();
+        
+        Pixel [] pixels = pic.getPixels();
+        for(Pixel pixel : pixels){
+            // if the pixel not in the range that the user choose to crop it, so it will be repainted to white.
+            if(!inRange(pixel))
+                    pixel.setColor(new Color(255,255,255));
+                }
+        icon = new ImageIcon(pic.getImage());
+        picView.setIcon(icon);
+    }//GEN-LAST:event_picViewMouseReleased
+
+    private void picViewMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_picViewMousePressed
+        // TODO add your handling code here:
+        ScropX = evt.getX() - ((500 - pic.getWidth())/2) ;
+        ScropY = evt.getY() - ((500 - pic.getHeight())/2);
+
+        
+        System.out.println("we here");
+    }//GEN-LAST:event_picViewMousePressed
     /**
      * @param args the command line arguments
      */
@@ -389,11 +473,34 @@ public void reset(){
         }
         return total / pixels.length;
     }  
+    
+    
+        public void replaceStartPoint(){
+        int temp = 0;
+        if(ScropX > EcropX)
+        {
+            temp = ScropX;
+            ScropX = EcropX;
+            EcropX = temp;
+        }
+        if(ScropY > EcropY){
+            temp = ScropY;
+            ScropY = EcropY;
+            EcropY = temp;
+        }
+    }
+    public boolean inRange(Pixel pixel){
+        if(pixel.getX() >= ScropX && pixel.getX() <= EcropX && pixel.getY() >= ScropY && pixel.getY() <= EcropY)
+            return true;
+        return false;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Browse;
     private javax.swing.JButton Reset;
     private javax.swing.JSlider blueSlider;
     private javax.swing.JSlider greenSlider;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -406,6 +513,7 @@ public void reset(){
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel picView;
     private javax.swing.JSlider redSlider;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
