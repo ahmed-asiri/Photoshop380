@@ -68,6 +68,7 @@ public class PictureUI extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        grayScale = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -198,7 +199,7 @@ public class PictureUI extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(picView, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)
                 .addContainerGap())
@@ -255,6 +256,13 @@ public class PictureUI extends javax.swing.JFrame {
 
         jButton2.setText("jButton2");
 
+        grayScale.setText("Gray Scale");
+        grayScale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grayScaleActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -264,13 +272,17 @@ public class PictureUI extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
+                .addGap(58, 58, 58)
+                .addComponent(grayScale, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(grayScale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(42, Short.MAX_VALUE))
@@ -393,7 +405,7 @@ public void reset(){
     private void picViewMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_picViewMouseReleased
         // TODO add your handling code here:
         
-        EcropX =   evt.getX() - ((500 - pic.getWidth())/2); // we apply this formula to selecting the pics pixels correctly.
+        EcropX =   evt.getX() - ((503 - pic.getWidth())/2); // we apply this formula to selecting the pic pixels correctly.
         EcropY =  evt.getY() - ((500 - pic.getHeight())/2);
         // if he crop the picture in reverse.
         replaceStartPoint();
@@ -402,7 +414,7 @@ public void reset(){
         for(Pixel pixel : pixels){
             // if the pixel not in the range that the user choose to crop it, so it will be repainted to white.
             if(!inRange(pixel))
-                    pixel.setColor(new Color(255,255,255));
+                    pixel.setColor(new Color(51,51,51));
                 }
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
@@ -410,12 +422,19 @@ public void reset(){
 
     private void picViewMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_picViewMousePressed
         // TODO add your handling code here:
-        ScropX = evt.getX() - ((500 - pic.getWidth())/2) ;
+        ScropX = evt.getX() - ((503 - pic.getWidth())/2) ;
         ScropY = evt.getY() - ((500 - pic.getHeight())/2);
 
         
         System.out.println("we here");
     }//GEN-LAST:event_picViewMousePressed
+
+    private void grayScaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grayScaleActionPerformed
+        // TODO add your handling code here:
+        pic.grayscale();
+        icon = new ImageIcon(pic.getImage());
+        picView.setIcon(icon);
+    }//GEN-LAST:event_grayScaleActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -498,6 +517,7 @@ public void reset(){
     private javax.swing.JButton Browse;
     private javax.swing.JButton Reset;
     private javax.swing.JSlider blueSlider;
+    private javax.swing.JButton grayScale;
     private javax.swing.JSlider greenSlider;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
