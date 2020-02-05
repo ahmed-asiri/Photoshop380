@@ -121,17 +121,17 @@
                                   <Group type="102" attributes="0">
                                       <Component id="blueSlider" min="-2" pref="314" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jLabel7" max="32767" attributes="0"/>
+                                      <Component id="blueLabel" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Component id="greenSlider" min="-2" pref="314" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jLabel8" max="32767" attributes="0"/>
+                                      <Component id="greenLabel" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="redSlider" min="-2" pref="314" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jLabel6" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="redLabel" min="-2" pref="30" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -144,7 +144,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                          <Component id="blueLabel" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -153,12 +153,12 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="redSlider" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                          <Component id="redLabel" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="greenSlider" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                          <Component id="greenLabel" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
@@ -238,19 +238,19 @@
                 <Property name="text" type="java.lang.String" value="B:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel6">
+            <Component class="javax.swing.JLabel" name="redLabel">
               <BindingProperties>
-                <BindingProperty name="text" source="redSlider" sourcePath="${value}" target="jLabel6" targetPath="text" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="text" source="redSlider" sourcePath="${value}" target="redLabel" targetPath="text" updateStrategy="0" immediately="false"/>
               </BindingProperties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel7">
+            <Component class="javax.swing.JLabel" name="blueLabel">
               <BindingProperties>
-                <BindingProperty name="text" source="blueSlider" sourcePath="${value}" target="jLabel7" targetPath="text" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="text" source="blueSlider" sourcePath="${value}" target="blueLabel" targetPath="text" updateStrategy="0" immediately="false"/>
               </BindingProperties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel8">
+            <Component class="javax.swing.JLabel" name="greenLabel">
               <BindingProperties>
-                <BindingProperty name="text" source="greenSlider" sourcePath="${value}" target="jLabel8" targetPath="text" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="text" source="greenSlider" sourcePath="${value}" target="greenLabel" targetPath="text" updateStrategy="0" immediately="false"/>
               </BindingProperties>
             </Component>
           </SubComponents>

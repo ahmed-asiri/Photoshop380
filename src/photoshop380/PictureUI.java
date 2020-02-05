@@ -57,9 +57,9 @@ public class PictureUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        redLabel = new javax.swing.JLabel();
+        blueLabel = new javax.swing.JLabel();
+        greenLabel = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         picView = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -115,13 +115,13 @@ public class PictureUI extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 255));
         jLabel4.setText("B:");
 
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, redSlider, org.jdesktop.beansbinding.ELProperty.create("${value}"), jLabel6, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, redSlider, org.jdesktop.beansbinding.ELProperty.create("${value}"), redLabel, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, blueSlider, org.jdesktop.beansbinding.ELProperty.create("${value}"), jLabel7, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, blueSlider, org.jdesktop.beansbinding.ELProperty.create("${value}"), blueLabel, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, greenSlider, org.jdesktop.beansbinding.ELProperty.create("${value}"), jLabel8, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, greenSlider, org.jdesktop.beansbinding.ELProperty.create("${value}"), greenLabel, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -142,22 +142,22 @@ public class PictureUI extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(blueSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(blueLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(greenSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(greenLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(redSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(redLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7)
+                    .addComponent(blueLabel)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
@@ -166,11 +166,11 @@ public class PictureUI extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(redSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2)
-                                    .addComponent(jLabel6))
+                                    .addComponent(redLabel))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(greenSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8)))
+                                    .addComponent(greenLabel)))
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -376,6 +376,7 @@ public void reset(){
         }
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
+        redLabel.setText(Integer.toString(redSlider.getValue()));
     }//GEN-LAST:event_redSliderStateChanged
 
     private void greenSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_greenSliderStateChanged
@@ -386,6 +387,8 @@ public void reset(){
         }
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
+                greenLabel.setText(Integer.toString(greenSlider.getValue()));
+
     }//GEN-LAST:event_greenSliderStateChanged
     private void blueSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_blueSliderStateChanged
         // TODO add your handling code here:
@@ -395,6 +398,8 @@ public void reset(){
         }
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
+                blueLabel.setText(Integer.toString(blueSlider.getValue()));
+
     }//GEN-LAST:event_blueSliderStateChanged
 
     private void picViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_picViewMouseClicked
@@ -516,8 +521,10 @@ public void reset(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Browse;
     private javax.swing.JButton Reset;
+    private javax.swing.JLabel blueLabel;
     private javax.swing.JSlider blueSlider;
     private javax.swing.JButton grayScale;
+    private javax.swing.JLabel greenLabel;
     private javax.swing.JSlider greenSlider;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -525,9 +532,6 @@ public void reset(){
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -535,6 +539,7 @@ public void reset(){
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel picView;
+    private javax.swing.JLabel redLabel;
     private javax.swing.JSlider redSlider;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
