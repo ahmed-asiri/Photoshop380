@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package photoshop380;
+import FinalJavaClasses.*;
 
-import AhmadClassCPIT380.*;
 import java.awt.Color;
 import javax.swing.*;
 
@@ -253,6 +253,11 @@ public class PictureUI extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton1.setText("Rotate");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("jButton2");
 
@@ -440,6 +445,10 @@ public void reset(){
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
     }//GEN-LAST:event_grayScaleActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
     /**
      * @param args the command line arguments
      */
