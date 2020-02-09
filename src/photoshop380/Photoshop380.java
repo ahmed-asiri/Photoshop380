@@ -5,7 +5,6 @@
  */
 package photoshop380;
 
-import AhmadClassCPIT380.Picture;
 
 /**
  *

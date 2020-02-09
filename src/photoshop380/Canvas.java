@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package photoshop380;
-import AhmadClassCPIT380.*;
+
+import cpit380practice.*;
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
