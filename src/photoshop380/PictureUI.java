@@ -88,24 +88,24 @@ public class PictureUI extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(153, 153, 153));
 
-        blueSlider.setMaximum(255);
-        blueSlider.setValue(128);
+        blueSlider.setMaximum(200);
+        blueSlider.setValue(100);
         blueSlider.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 blueSliderStateChanged(evt);
             }
         });
 
-        greenSlider.setMaximum(255);
-        greenSlider.setValue(128);
+        greenSlider.setMaximum(200);
+        greenSlider.setValue(100);
         greenSlider.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 greenSliderStateChanged(evt);
             }
         });
 
-        redSlider.setMaximum(255);
-        redSlider.setValue(128);
+        redSlider.setMaximum(200);
+        redSlider.setValue(100);
         redSlider.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 redSliderStateChanged(evt);
@@ -442,9 +442,12 @@ public class PictureUI extends javax.swing.JFrame {
         reset();
     }//GEN-LAST:event_ResetActionPerformed
 public void reset(){
-        redSlider.setValue(getAverageRed());
-        greenSlider.setValue(getAverageGreen());
-        blueSlider.setValue(getAverageBlue());
+        redSlider.setValue(100);
+        greenSlider.setValue(100);
+        blueSlider.setValue(100);
+        redLabel.setText("1.0");
+        greenLabel.setText("1.0");
+        blueLabel.setText("1.0");
         pic = new Picture(fileName);
         
         icon = new ImageIcon(pic.getImage());
@@ -453,34 +456,60 @@ public void reset(){
     private void redSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_redSliderStateChanged
         // TODO add your handling code here:
         Pixel [] pixels = pic.getPixels();
+        double percent = (redSlider.getValue() / 100.0);
+        
         for(Pixel pixel : pixels){
-            pixel.setRed(redSlider.getValue());
+            int color =(int)(pixel.getRed() * percent);
+            if (color > 255) {
+                pixel.setRed(255);
+            } else if (color < 0) {
+                pixel.setRed(2);
+            } else {
+                pixel.setRed((int)color);
+            }
         }
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
-        redLabel.setText(Integer.toString(redSlider.getValue()));
+        redLabel.setText(percent + "");
     }//GEN-LAST:event_redSliderStateChanged
 
     private void greenSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_greenSliderStateChanged
         // TODO add your handling code here:
         Pixel [] pixels = pic.getPixels();
+        double percent = (greenSlider.getValue() / 100.0);
+        System.out.println(percent);
         for(Pixel pixel : pixels){
-            pixel.setGreen(greenSlider.getValue());
+            int color = (int) (percent *  pixel.getGreen());
+            if (color > 255) {
+                pixel.setGreen(255);
+            } else if (color < 0) {
+                pixel.setGreen(2);
+            } else {
+                pixel.setGreen((int)color);
+            }
         }
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
-                greenLabel.setText(Integer.toString(greenSlider.getValue()));
+        greenLabel.setText(percent + "");
 
     }//GEN-LAST:event_greenSliderStateChanged
     private void blueSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_blueSliderStateChanged
         // TODO add your handling code here:
         Pixel [] pixels = pic.getPixels();
+        double percent = (blueSlider.getValue() / 100.0) ;
         for(Pixel pixel : pixels){
-            pixel.setBlue(blueSlider.getValue());
+            int color =(int) (percent *  pixel.getBlue());
+            if (color > 255) {
+                pixel.setBlue(255);
+            } else if (color < 0) {
+                pixel.setBlue(2);
+            } else {
+                pixel.setBlue((int)color);
+            }
         }
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
-                blueLabel.setText(Integer.toString(blueSlider.getValue()));
+        blueLabel.setText(percent + "");
 
     }//GEN-LAST:event_blueSliderStateChanged
 
