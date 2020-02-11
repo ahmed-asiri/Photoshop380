@@ -75,7 +75,7 @@ public class PictureUI extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         horizantalRefliction = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        verticalRefliction = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
 
@@ -344,7 +344,12 @@ public class PictureUI extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Vertical");
+        verticalRefliction.setText("Vertical");
+        verticalRefliction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verticalReflictionActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("D1");
 
@@ -366,7 +371,7 @@ public class PictureUI extends javax.swing.JFrame {
                 .addGap(81, 81, 81)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                    .addComponent(verticalRefliction, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -377,7 +382,7 @@ public class PictureUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(horizantalRefliction)
-                    .addComponent(jButton6))
+                    .addComponent(verticalRefliction))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton7)
@@ -579,6 +584,24 @@ public void reset(){
         picView.setIcon(icon);
         
     }//GEN-LAST:event_horizantalReflictionActionPerformed
+
+    private void verticalReflictionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verticalReflictionActionPerformed
+        // TODO add your handling code here:
+        Picture newPic = new Picture(pic);
+        Pixel sourcPixel = null;
+        Pixel targetPixel = null;
+        
+        for (int x = 0; x < pic.getWidth(); x++) {
+            for (int y = 0; y < pic.getHeight()/2; y++) {
+                sourcPixel = pic.getPixel(x, y);
+                targetPixel = newPic.getPixel(x, pic.getHeight() - y - 1);
+                targetPixel.setColor(sourcPixel.getColor());
+            }
+        }
+        icon = new ImageIcon(newPic.getImage());
+        picView.setIcon(icon);
+        
+    }//GEN-LAST:event_verticalReflictionActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -669,7 +692,6 @@ public void reset(){
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
@@ -690,5 +712,6 @@ public void reset(){
     private javax.swing.JLabel redLabel;
     private javax.swing.JSlider redSlider;
     private javax.swing.JButton rotate90Left;
+    private javax.swing.JButton verticalRefliction;
     // End of variables declaration//GEN-END:variables
 }
