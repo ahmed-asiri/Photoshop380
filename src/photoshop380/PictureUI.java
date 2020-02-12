@@ -77,7 +77,7 @@ public class PictureUI extends javax.swing.JFrame {
         horizantalRefliction = new javax.swing.JButton();
         verticalRefliction = new javax.swing.JButton();
         D1refliction = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        D2reflection = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
 
@@ -360,10 +360,10 @@ public class PictureUI extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setText("D2");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        D2reflection.setText("D2");
+        D2reflection.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                D2reflectionActionPerformed(evt);
             }
         });
 
@@ -382,7 +382,7 @@ public class PictureUI extends javax.swing.JFrame {
                     .addComponent(horizantalRefliction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(81, 81, 81)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(D2reflection, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(verticalRefliction, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -398,7 +398,7 @@ public class PictureUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(D1refliction)
-                    .addComponent(jButton8))
+                    .addComponent(D2reflection))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -667,7 +667,7 @@ public void reset(){
         
     }//GEN-LAST:event_D1reflictionActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void D2reflectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D2reflectionActionPerformed
         // TODO add your handling code here:
         
         int size = cropEqually();
@@ -688,7 +688,7 @@ public void reset(){
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
         
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_D2reflectionActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -793,6 +793,7 @@ public void reset(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Browse;
     private javax.swing.JButton D1refliction;
+    private javax.swing.JButton D2reflection;
     private javax.swing.JButton Reset;
     private javax.swing.JLabel blueLabel;
     private javax.swing.JSlider blueSlider;
@@ -803,7 +804,6 @@ public void reset(){
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
