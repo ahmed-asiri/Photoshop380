@@ -361,6 +361,11 @@ public class PictureUI extends javax.swing.JFrame {
         });
 
         jButton8.setText("D2");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -595,8 +600,9 @@ public void reset(){
 
     private void rotate90LeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rotate90LeftActionPerformed
         // TODO add your handling code here:
-        Picture p = pic.rotate(90);
-        icon = new ImageIcon(p.getImage());
+        Picture newPic = pic.rotate(90);
+        pic = newPic;
+        icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
     }//GEN-LAST:event_rotate90LeftActionPerformed
 
@@ -613,7 +619,8 @@ public void reset(){
                 targetPixel.setColor(sourcPixel.getColor());
             }
         }
-        icon = new ImageIcon(newPic.getImage());
+        pic = newPic;
+        icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
         
     }//GEN-LAST:event_horizantalReflictionActionPerformed
@@ -631,7 +638,8 @@ public void reset(){
                 targetPixel.setColor(sourcPixel.getColor());
             }
         }
-        icon = new ImageIcon(newPic.getImage());
+        pic = newPic;
+        icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
         
     }//GEN-LAST:event_verticalReflictionActionPerformed
@@ -653,11 +661,34 @@ public void reset(){
                 }
             }
         }
-        
-        icon = new ImageIcon(newPic.getImage());
+        pic = newPic;
+        icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
         
     }//GEN-LAST:event_D1reflictionActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        
+        int size = cropEqually();
+        Pixel [] pixels = pic.getPixels();
+        Pixel source = null;
+        Pixel target = null;
+        Picture newPic = new Picture(pic);
+        for (int x = 0; x < size; x++) {
+            for (int y = 0; y < size; y++) {
+                if((x+y) > size){
+                    source = pic.getPixel(x, y);
+                    target = newPic.getPixel(size - y - 1, size - x - 1);
+                    target.setColor(source.getColor());
+                }
+            }
+        }
+        pic = newPic;
+        icon = new ImageIcon(pic.getImage());
+        picView.setIcon(icon);
+        
+    }//GEN-LAST:event_jButton8ActionPerformed
     /**
      * @param args the command line arguments
      */
