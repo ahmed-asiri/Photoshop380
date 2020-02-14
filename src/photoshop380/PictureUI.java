@@ -526,7 +526,7 @@ public class PictureUI extends javax.swing.JFrame {
 
     private void rotate90LeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rotate90LeftActionPerformed
 
-        Picture p = pic.rotate(90);
+        Picture p = pic.rotate(270);
         icon = new ImageIcon(p.getImage());
         picView.setIcon(icon);
     }//GEN-LAST:event_rotate90LeftActionPerformed
