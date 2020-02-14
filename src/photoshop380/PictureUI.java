@@ -291,6 +291,11 @@ public class PictureUI extends javax.swing.JFrame {
         jLabel5.setText("Rotate");
 
         jButton1.setText("90 Right");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("180 Left");
 
@@ -608,16 +613,12 @@ public void reset(){
     }//GEN-LAST:event_grayScaleActionPerformed
 
     private void rotate90LeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rotate90LeftActionPerformed
-           Picture target = new Picture(pic.getHeight(),
-                   pic.getWidth());
+           Picture target = new Picture(pic.getHeight(),pic.getWidth());
            Pixel sourcePixel = null;
            Pixel targetPixel = null;
 
-           // loop through the columns
            for (int sourceX = 0;sourceX < pic.getWidth();sourceX++) {
-               // loop through the rows
                for (int sourceY = 0;sourceY < pic.getHeight();sourceY++) {
-                   // set the target pixel color to the source pixel color
                    sourcePixel = pic.getPixel(sourceX, sourceY);
                    targetPixel = target.getPixel(sourceY,pic.getWidth() - 1 - sourceX);
                    targetPixel.setColor(sourcePixel.getColor());
@@ -711,6 +712,25 @@ public void reset(){
         picView.setIcon(icon);
         
     }//GEN-LAST:event_D2reflectionActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here: // rotate 90 right
+        Picture target = new Picture(pic.getHeight(),pic.getWidth());
+        Pixel sourcePixle = null;
+        Pixel targetPixle = null;
+        
+        for (int x = 0; x < pic.getWidth(); x++) {
+            for (int y = 0; y < pic.getHeight(); y++) {
+                sourcePixle = pic.getPixel(x, y);
+                targetPixle = target.getPixel(pic.getHeight() - 1 - y, x);
+                targetPixle.setColor(sourcePixle.getColor());
+            }
+        }
+        
+        pic = target;
+        icon = new ImageIcon(pic.getImage());
+        picView.setIcon(icon);
+    }//GEN-LAST:event_jButton1ActionPerformed
     /**
      * @param args the command line arguments
      */
