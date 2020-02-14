@@ -298,6 +298,11 @@ public class PictureUI extends javax.swing.JFrame {
         });
 
         jButton2.setText("180 Left");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("180 Right");
 
@@ -731,6 +736,25 @@ public void reset(){
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here: rotate 180 
+        Picture target = new Picture(pic);
+        Pixel sourcePixel = null;
+        Pixel targetPixel = null;
+        for (int x = 0; x < pic.getWidth(); x++) {
+            for (int y = 0; y < pic.getHeight(); y++) {
+                sourcePixel = pic.getPixel(x, y);
+                targetPixel = target.getPixel(pic.getWidth() - 1 - x, pic.getHeight() - 1 - y);
+                targetPixel.setColor(sourcePixel.getColor());
+            }
+        }
+        
+        pic = target;
+        icon = new ImageIcon(pic.getImage());
+        picView.setIcon(icon);
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
     /**
      * @param args the command line arguments
      */
