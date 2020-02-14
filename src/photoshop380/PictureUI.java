@@ -4,11 +4,9 @@
  * and open the template in the editor.
  */
 package photoshop380;
-
 import cpit380practice.*;
 
 import java.awt.Color;
-import java.awt.image.BufferedImage;
 import javax.swing.*;
 
 /**
@@ -16,7 +14,7 @@ import javax.swing.*;
  * @author ia7ma
  */
 public class PictureUI extends javax.swing.JFrame {
-
+    
     String fileName;
     Picture pic;
     ImageIcon icon;
@@ -24,17 +22,16 @@ public class PictureUI extends javax.swing.JFrame {
     int ScropY;
     int EcropX;
     int EcropY;
-
     /**
      * Creates new form Picture
      */
-
+    
     public PictureUI() {
         initComponents();
         fileName = null;
         icon = null;
         pic = null;
-
+        
         redSlider.enable(false);
         greenSlider.enable(false);
         blueSlider.enable(false);
@@ -72,15 +69,17 @@ public class PictureUI extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         rotate90Left = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        rotate90Right = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        horizantalRefliction = new javax.swing.JButton();
+        verticalRefliction = new javax.swing.JButton();
+        D1refliction = new javax.swing.JButton();
+        D2reflection = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
 
@@ -91,24 +90,24 @@ public class PictureUI extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(153, 153, 153));
 
-        blueSlider.setMaximum(255);
-        blueSlider.setValue(128);
+        blueSlider.setMaximum(200);
+        blueSlider.setValue(100);
         blueSlider.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 blueSliderStateChanged(evt);
             }
         });
 
-        greenSlider.setMaximum(255);
-        greenSlider.setValue(128);
+        greenSlider.setMaximum(200);
+        greenSlider.setValue(100);
         greenSlider.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 greenSliderStateChanged(evt);
             }
         });
 
-        redSlider.setMaximum(255);
-        redSlider.setValue(128);
+        redSlider.setMaximum(200);
+        redSlider.setValue(100);
         redSlider.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 redSliderStateChanged(evt);
@@ -289,10 +288,11 @@ public class PictureUI extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Rotate");
 
-        rotate90Right.setText("90 Right");
+        jButton1.setText("90 Right");
 
         jButton2.setText("180 Left");
 
@@ -313,18 +313,18 @@ public class PictureUI extends javax.swing.JFrame {
                     .addComponent(rotate90Left, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(rotate90Right, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4))
                 .addGap(62, 62, 62))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(rotate90Right, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(rotate90Left, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -336,15 +336,36 @@ public class PictureUI extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(153, 153, 153));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Reflection");
 
-        jButton5.setText("Horizantal");
+        horizantalRefliction.setText("Horizantal");
+        horizantalRefliction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                horizantalReflictionActionPerformed(evt);
+            }
+        });
 
-        jButton6.setText("Vertical");
+        verticalRefliction.setText("Vertical");
+        verticalRefliction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verticalReflictionActionPerformed(evt);
+            }
+        });
 
-        jButton7.setText("D1");
+        D1refliction.setText("D1");
+        D1refliction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                D1reflictionActionPerformed(evt);
+            }
+        });
 
-        jButton8.setText("D2");
+        D2reflection.setText("D2");
+        D2reflection.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                D2reflectionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -357,12 +378,12 @@ public class PictureUI extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(79, 79, 79)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(D1refliction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(horizantalRefliction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(81, 81, 81)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                    .addComponent(D2reflection, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(verticalRefliction, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -372,13 +393,37 @@ public class PictureUI extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
+                    .addComponent(horizantalRefliction)
+                    .addComponent(verticalRefliction))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton7)
-                    .addComponent(jButton8))
+                    .addComponent(D1refliction)
+                    .addComponent(D2reflection))
                 .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        jPanel8.setBackground(new java.awt.Color(153, 153, 153));
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Scaling");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(148, 148, 148))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -386,11 +431,12 @@ public class PictureUI extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -415,7 +461,9 @@ public class PictureUI extends javax.swing.JFrame {
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 182, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 33, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
@@ -426,13 +474,13 @@ public class PictureUI extends javax.swing.JFrame {
     private void BrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BrowseActionPerformed
         // TODO add your handling code here:
         fileName = FileChooser.pickAFile();
-        if (fileName != null) {
+        if(fileName != null){
             pic = new Picture(fileName);
             redSlider.enable(true);
             greenSlider.enable(true);
             blueSlider.enable(true);
             reset();
-
+            
         }
     }//GEN-LAST:event_BrowseActionPerformed
 
@@ -442,78 +490,104 @@ public class PictureUI extends javax.swing.JFrame {
         icon = new ImageIcon(pic.getImage());
         reset();
     }//GEN-LAST:event_ResetActionPerformed
-    public void reset() {
-        redSlider.setValue(getAverageRed());
-        greenSlider.setValue(getAverageGreen());
-        blueSlider.setValue(getAverageBlue());
+public void reset(){
+        redSlider.setValue(100);
+        greenSlider.setValue(100);
+        blueSlider.setValue(100);
+        redLabel.setText("1.0");
+        greenLabel.setText("1.0");
+        blueLabel.setText("1.0");
         pic = new Picture(fileName);
-
+        
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
-    }
+}
     private void redSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_redSliderStateChanged
         // TODO add your handling code here:
-        Pixel[] pixels = pic.getPixels();
-        for (Pixel pixel : pixels) {
-            pixel.setRed(redSlider.getValue());
+        Pixel [] pixels = pic.getPixels();
+        double percent = (redSlider.getValue() / 100.0);
+        
+        for(Pixel pixel : pixels){
+            int color =(int)(pixel.getRed() * percent);
+            if (color > 255) {
+                pixel.setRed(255);
+            } else if (color < 0) {
+                pixel.setRed(2);
+            } else {
+                pixel.setRed((int)color);
+            }
         }
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
-        redLabel.setText(Integer.toString(redSlider.getValue()));
+        redLabel.setText(percent + "");
     }//GEN-LAST:event_redSliderStateChanged
 
     private void greenSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_greenSliderStateChanged
         // TODO add your handling code here:
-        Pixel[] pixels = pic.getPixels();
-        for (Pixel pixel : pixels) {
-            pixel.setGreen(greenSlider.getValue());
+        Pixel [] pixels = pic.getPixels();
+        double percent = (greenSlider.getValue() / 100.0);
+        for(Pixel pixel : pixels){
+            int color = (int) (percent *  pixel.getGreen());
+            if (color > 255) {
+                pixel.setGreen(255);
+            } else if (color < 0) {
+                pixel.setGreen(2);
+            } else {
+                pixel.setGreen((int)color);
+            }
         }
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
-        greenLabel.setText(Integer.toString(greenSlider.getValue()));
+        greenLabel.setText(percent + "");
 
     }//GEN-LAST:event_greenSliderStateChanged
     private void blueSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_blueSliderStateChanged
         // TODO add your handling code here:
-        Pixel[] pixels = pic.getPixels();
-        for (Pixel pixel : pixels) {
-            pixel.setBlue(blueSlider.getValue());
+        Pixel [] pixels = pic.getPixels();
+        double percent = (blueSlider.getValue() / 100.0) ;
+        for(Pixel pixel : pixels){
+            int color =(int) (percent *  pixel.getBlue());
+            if (color > 255) {
+                pixel.setBlue(255);
+            } else if (color < 0) {
+                pixel.setBlue(2);
+            } else {
+                pixel.setBlue((int)color);
+            }
         }
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
-        blueLabel.setText(Integer.toString(blueSlider.getValue()));
+        blueLabel.setText(percent + "");
 
     }//GEN-LAST:event_blueSliderStateChanged
 
     private void picViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_picViewMouseClicked
         // TODO add your handling code here:
-
+     
     }//GEN-LAST:event_picViewMouseClicked
 
     private void picViewMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_picViewMouseReleased
         // TODO add your handling code here:
-
-        EcropX = evt.getX() - ((503 - pic.getWidth()) / 2); // we apply this formula to selecting the pic pixels correctly.
-        EcropY = evt.getY() - ((500 - pic.getHeight()) / 2);
+        
+        EcropX =   evt.getX() - ((503 - pic.getWidth())/2); // we apply this formula to selecting the pic pixels correctly.
+        EcropY =  evt.getY() - ((500 - pic.getHeight())/2);
         // if he crop the picture in reverse.
         replaceStartPoint();
-
-        Pixel[] pixels = pic.getPixels();
-        for (Pixel pixel : pixels) {
+        
+        Pixel [] pixels = pic.getPixels();
+        for(Pixel pixel : pixels){
             // if the pixel not in the range that the user choose to crop it, so it will be repainted to white.
-            if (!inRange(pixel)) {
-                pixel.setColor(new Color(51, 51, 51));
-            }
-        }
+            if(!inRange(pixel))
+                    pixel.setColor(new Color(51,51,51));
+                }
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
     }//GEN-LAST:event_picViewMouseReleased
 
     private void picViewMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_picViewMousePressed
         // TODO add your handling code here:
-        ScropX = evt.getX() - ((503 - pic.getWidth()) / 2);
-        ScropY = evt.getY() - ((500 - pic.getHeight()) / 2);
-
+        ScropX = evt.getX() - ((503 - pic.getWidth())/2) ;
+        ScropY = evt.getY() - ((500 - pic.getHeight())/2);
         System.out.println("we here");
     }//GEN-LAST:event_picViewMousePressed
 
@@ -530,9 +604,116 @@ public class PictureUI extends javax.swing.JFrame {
         icon = new ImageIcon(p.getImage());
         picView.setIcon(icon);
     }//GEN-LAST:event_rotate90LeftActionPerformed
+
+    private void horizantalReflictionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horizantalReflictionActionPerformed
+        // TODO add your handling code here:
+        Picture newPic = new Picture(pic);
+        Pixel sourcPixel = null;
+        Pixel targetPixel = null;
+        
+        for (int x = 0; x < pic.getWidth()/2; x++) {
+            for (int y = 0; y < pic.getHeight(); y++) {
+                sourcPixel = pic.getPixel(x, y);
+                targetPixel = newPic.getPixel(pic.getWidth() - x - 1, y);
+                targetPixel.setColor(sourcPixel.getColor());
+            }
+        }
+        pic = newPic;
+        icon = new ImageIcon(pic.getImage());
+        picView.setIcon(icon);
+        
+    }//GEN-LAST:event_horizantalReflictionActionPerformed
+
+    private void verticalReflictionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verticalReflictionActionPerformed
+        // TODO add your handling code here:
+        Picture newPic = new Picture(pic);
+        Pixel sourcPixel = null;
+        Pixel targetPixel = null;
+        
+        for (int x = 0; x < pic.getWidth(); x++) {
+            for (int y = 0; y < pic.getHeight()/2; y++) {
+                sourcPixel = pic.getPixel(x, y);
+                targetPixel = newPic.getPixel(x, pic.getHeight() - y - 1);
+                targetPixel.setColor(sourcPixel.getColor());
+            }
+        }
+        pic = newPic;
+        icon = new ImageIcon(pic.getImage());
+        picView.setIcon(icon);
+        
+    }//GEN-LAST:event_verticalReflictionActionPerformed
+
+    private void D1reflictionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D1reflictionActionPerformed
+        // TODO add your handling code here:
+        int size = cropEqually();
+        Pixel [] pixels = pic.getPixels();
+        Picture newPic =  new Picture(pic);
+        Pixel sourcePixel = null;
+        Pixel targetPixel = null;
+        
+        for (int x = 0; x < size; x++) {
+            for (int y = 0; y < size; y++) {
+                if(x > y){
+                    sourcePixel = pic.getPixel(x, y);
+                    targetPixel = newPic.getPixel(y, x);
+                    targetPixel.setColor(sourcePixel.getColor());
+                }
+            }
+        }
+        pic = newPic;
+        icon = new ImageIcon(pic.getImage());
+        picView.setIcon(icon);
+        
+    }//GEN-LAST:event_D1reflictionActionPerformed
+
+    private void D2reflectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D2reflectionActionPerformed
+        // TODO add your handling code here:
+        
+        int size = cropEqually();
+        Pixel [] pixels = pic.getPixels();
+        Pixel source = null;
+        Pixel target = null;
+        Picture newPic = new Picture(pic);
+        for (int x = 0; x < size; x++) {
+            for (int y = 0; y < size; y++) {
+                if((x+y) > size){
+                    source = pic.getPixel(x, y);
+                    target = newPic.getPixel(size - y - 1, size - x - 1);
+                    target.setColor(source.getColor());
+                }
+            }
+        }
+        pic = newPic;
+        icon = new ImageIcon(pic.getImage());
+        picView.setIcon(icon);
+        
+    }//GEN-LAST:event_D2reflectionActionPerformed
     /**
      * @param args the command line arguments
      */
+    
+    private int cropEqually(){
+        // we cannot do the Diagnol refliction without croping the Picture equally.
+        int width = pic.getWidth();
+        int height = pic.getHeight();
+        Pixel source = null;
+        Pixel target = null;
+        Picture newPic = null;
+        int size = width > height ? height : width;
+            newPic = new Picture(size, size);
+            Pixel [] pixels = pic.getPixels();
+            for (int x = 0; x < size; x++) {
+                for (int y = 0; y < size; y++) {
+                    source = pic.getPixel(x, y);
+                    target = newPic.getPixel(x, y);
+                    target.setColor(source.getColor());
+                }
+            }
+        pic = newPic;
+        icon = new ImageIcon(newPic.getImage());
+        picView.setIcon(icon);
+        return size;
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -564,74 +745,71 @@ public class PictureUI extends javax.swing.JFrame {
             }
         });
     }
-
-    public int getAverageRed() {
+    public int getAverageRed(){
         int total = 0;
-        Pixel[] pixels = pic.getPixels();
-        for (Pixel pixel : pixels) {
+        Pixel [] pixels = pic.getPixels();
+        for (Pixel pixel: pixels){
             total += pixel.getRed();
         }
         return total / pixels.length;
-    }
-
-    public int getAverageGreen() {
+    }public int getAverageGreen(){
         int total = 0;
-        Pixel[] pixels = pic.getPixels();
-        for (Pixel pixel : pixels) {
+        Pixel [] pixels = pic.getPixels();
+        for (Pixel pixel: pixels){
             total += pixel.getGreen();
         }
         return total / pixels.length;
-    }
-
-    public int getAverageBlue() {
+    }    
+    public int getAverageBlue(){
         int total = 0;
-        Pixel[] pixels = pic.getPixels();
-        for (Pixel pixel : pixels) {
+        Pixel [] pixels = pic.getPixels();
+        for (Pixel pixel: pixels){
             total += pixel.getBlue();
         }
         return total / pixels.length;
-    }
-
-    public void replaceStartPoint() {
+    }  
+    
+    
+        public void replaceStartPoint(){
         int temp = 0;
-        if (ScropX > EcropX) {
+        if(ScropX > EcropX)
+        {
             temp = ScropX;
             ScropX = EcropX;
             EcropX = temp;
         }
-        if (ScropY > EcropY) {
+        if(ScropY > EcropY){
             temp = ScropY;
             ScropY = EcropY;
             EcropY = temp;
         }
     }
-
-    public boolean inRange(Pixel pixel) {
-        if (pixel.getX() >= ScropX && pixel.getX() <= EcropX && pixel.getY() >= ScropY && pixel.getY() <= EcropY) {
+    public boolean inRange(Pixel pixel){
+        if(pixel.getX() >= ScropX && pixel.getX() <= EcropX && pixel.getY() >= ScropY && pixel.getY() <= EcropY)
             return true;
-        }
         return false;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Browse;
+    private javax.swing.JButton D1refliction;
+    private javax.swing.JButton D2reflection;
     private javax.swing.JButton Reset;
     private javax.swing.JLabel blueLabel;
     private javax.swing.JSlider blueSlider;
     private javax.swing.JButton grayScale;
     private javax.swing.JLabel greenLabel;
     private javax.swing.JSlider greenSlider;
+    private javax.swing.JButton horizantalRefliction;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -640,10 +818,11 @@ public class PictureUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JLabel picView;
     private javax.swing.JLabel redLabel;
     private javax.swing.JSlider redSlider;
     private javax.swing.JButton rotate90Left;
-    private javax.swing.JButton rotate90Right;
+    private javax.swing.JButton verticalRefliction;
     // End of variables declaration//GEN-END:variables
 }
