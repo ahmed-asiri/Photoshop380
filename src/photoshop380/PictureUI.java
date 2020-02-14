@@ -84,7 +84,6 @@ public class PictureUI extends javax.swing.JFrame {
         jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -288,7 +287,6 @@ public class PictureUI extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Rotate");
 
@@ -336,7 +334,6 @@ public class PictureUI extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(153, 153, 153));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Reflection");
 
         horizantalRefliction.setText("Horizantal");
@@ -405,7 +402,6 @@ public class PictureUI extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(153, 153, 153));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Scaling");
 
@@ -466,7 +462,20 @@ public class PictureUI extends javax.swing.JFrame {
                 .addGap(0, 33, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -599,9 +608,23 @@ public void reset(){
     }//GEN-LAST:event_grayScaleActionPerformed
 
     private void rotate90LeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rotate90LeftActionPerformed
+           Picture target = new Picture(pic.getHeight(),
+                   pic.getWidth());
+           Pixel sourcePixel = null;
+           Pixel targetPixel = null;
 
-        Picture p = pic.rotate(270);
-        icon = new ImageIcon(p.getImage());
+           // loop through the columns
+           for (int sourceX = 0;sourceX < pic.getWidth();sourceX++) {
+               // loop through the rows
+               for (int sourceY = 0;sourceY < pic.getHeight();sourceY++) {
+                   // set the target pixel color to the source pixel color
+                   sourcePixel = pic.getPixel(sourceX, sourceY);
+                   targetPixel = target.getPixel(sourceY,pic.getWidth() - 1 - sourceX);
+                   targetPixel.setColor(sourcePixel.getColor());
+               }
+           }
+        pic = target;
+        icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
     }//GEN-LAST:event_rotate90LeftActionPerformed
 

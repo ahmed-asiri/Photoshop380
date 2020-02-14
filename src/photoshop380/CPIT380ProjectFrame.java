@@ -5,7 +5,7 @@
  */
 package photoshop380;
 
-import AhmadClassCPIT380.*;
+import cpit380practice.*;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.*;
