@@ -99,11 +99,11 @@ public class Picture extends SimplePicture {
 
             // change the blue value
             value = pixel.getBlue();
-            pixel.setBlue((int) (value * factor/100));
+            pixel.setBlue((int) (value * factor / 100));
 
             // change the green value
             value = pixel.getGreen();
-            pixel.setGreen((int) (value * factor/100));
+            pixel.setGreen((int) (value * factor / 100));
 
             // increment the index
             i++;
@@ -405,7 +405,7 @@ public class Picture extends SimplePicture {
                     topValue = (i + 1) * increment;
                     middleValue = (int) ((bottomValue + topValue - 1) / 2.0);
 
-          // check if current values are in current range and if so
+                    // check if current values are in current range and if so
                     // set them to the middle value
                     if (bottomValue <= redValue && redValue < topValue) {
                         pixel.setRed(middleValue);
@@ -458,7 +458,7 @@ public class Picture extends SimplePicture {
         Rectangle2D rect
                 = getTransformEnclosingRect(rotateTransform);
 
-    // create a new picture object big enough to hold the result no
+        // create a new picture object big enough to hold the result no
         // matter what the rotation is
         Picture result = new Picture((int) (Math.ceil(rect.getWidth())),
                 (int) (Math.ceil(rect.getHeight())));
@@ -467,7 +467,7 @@ public class Picture extends SimplePicture {
         Graphics graphics = result.getGraphics();
         Graphics2D g2 = (Graphics2D) graphics;
 
-    // save the current transformation and set-up to center the 
+        // save the current transformation and set-up to center the 
         // rotated image
         AffineTransform savedTrans = g2.getTransform();
         AffineTransform centerTrans = new AffineTransform();
@@ -482,7 +482,7 @@ public class Picture extends SimplePicture {
 
         return result;
     }
-     //---------------------------------------------------
+    //---------------------------------------------------
 
     public static int otsuTreshold(Picture original) {
 
@@ -546,7 +546,7 @@ public class Picture extends SimplePicture {
         }
         return histogram;
     }
- //--------------------------------------------------------------------
+    //--------------------------------------------------------------------
 
     public void mirrorHorizontalBottomToTop() {
         int height = this.getHeight();
@@ -852,8 +852,8 @@ public class Picture extends SimplePicture {
         Picture Image = new Picture(x, y);
         Image.copy(this, 0, 0, x, y, 0, 0);
         double filter[][] = {{0.075, 0.125, 0.075},
-                             {0.125, 0.200, 0.125},
-                             {0.075, 0.125, 0.075}};
+        {0.125, 0.200, 0.125},
+        {0.075, 0.125, 0.075}};
         for (int v = 1; v <= y - 2; v++) {
             for (int u = 1; u <= x - 2; u++) {
                 double sumRed = 0, sumGreen = 0, sumBlue = 0;
@@ -931,11 +931,11 @@ public class Picture extends SimplePicture {
                 int Red = (int) Math.round(sumRed / 9.0);
                 int Green = (int) Math.round(sumGreen / 9.0);
                 int Blue = (int) Math.round(sumBlue / 9.0);
-                this.getPixel(u,v).setColor(new Color(Red, Green, Blue));
+                this.getPixel(u, v).setColor(new Color(Red, Green, Blue));
             }
         }
     }
-    
+
     public void MinFilter() {
 
         int x = this.getWidth();
@@ -959,12 +959,12 @@ public class Picture extends SimplePicture {
                 Arrays.sort(Red);
                 Arrays.sort(Green);
                 Arrays.sort(Blue);
-                this.getPixel(u,v).setColor(new Color(Red[0], Green[0], Blue[0]));
+                this.getPixel(u, v).setColor(new Color(Red[0], Green[0], Blue[0]));
             }
         }
     }
-    
-     public void MedianFilter() {
+
+    public void MedianFilter() {
 
         int x = this.getWidth();
         int y = this.getHeight();
@@ -987,12 +987,12 @@ public class Picture extends SimplePicture {
                 Arrays.sort(Red);
                 Arrays.sort(Green);
                 Arrays.sort(Blue);
-                this.getPixel(u,v).setColor(new Color(Red[4], Green[4], Blue[4]));
+                this.getPixel(u, v).setColor(new Color(Red[4], Green[4], Blue[4]));
             }
         }
     }
-     
-      public void MaxFilter() {
+
+    public void MaxFilter() {
 
         int x = this.getWidth();
         int y = this.getHeight();
@@ -1015,7 +1015,7 @@ public class Picture extends SimplePicture {
                 Arrays.sort(Red);
                 Arrays.sort(Green);
                 Arrays.sort(Blue);
-                this.getPixel(u,v).setColor(new Color(Red[8], Green[8], Blue[8]));
+                this.getPixel(u, v).setColor(new Color(Red[8], Green[8], Blue[8]));
             }
         }
     }
@@ -1082,8 +1082,6 @@ public class Picture extends SimplePicture {
                     255 - blueValue));
         }
     }
-
- 
 
     public void AddValueColor(Picture sourcePicture, int Red_value, int Green_value, int Blue_value) {
         Pixel sourcePixel = null;
@@ -1220,7 +1218,7 @@ public class Picture extends SimplePicture {
                 source1Picture.getWidth(), source1Picture.getHeight(),
                 300, targetBottomY - source1Picture.getHeight() - 50);
 
-     // clear the blue from source 2 picture
+        // clear the blue from source 2 picture
         // source2Picture.clearBlue();
         source1Picture.negate();
         // copy negated source1Picture to 400
@@ -1401,8 +1399,7 @@ public class Picture extends SimplePicture {
             }
         }
     }
-    
-    
+
     /**
      * Method to rotate the current picture left 90 degrees
      *
@@ -1431,10 +1428,10 @@ public class Picture extends SimplePicture {
         }
         return target;
     }
-    
-  // this method changes all colors by the values entered through user interface, i.e. GUI
+
+    // this method changes all colors by the values entered through user interface, i.e. GUI
     // author : saim_rasheed@hotmail.com    
-    public Picture my_changeAllColors(double redFact, double greenFact, double blueFact){
+    public Picture my_changeAllColors(double redFact, double greenFact, double blueFact) {
         Pixel[] arrayPixel = this.getPixels();
         Pixel sourcePixel = null;
         int index = 0;
@@ -1448,8 +1445,7 @@ public class Picture extends SimplePicture {
                 value = sourcePixel.getRed();
                 value = (int) (value * redFact);
                 sourcePixel.setRed(value);
-            }
-            else{
+            } else {
                 sourcePixel.setRed(sourcePixel.getRed());
             }
 
@@ -1458,8 +1454,7 @@ public class Picture extends SimplePicture {
                 value = sourcePixel.getGreen();
                 value = (int) (value * greenFact);
                 sourcePixel.setGreen(value);
-            }
-            else{
+            } else {
                 sourcePixel.setGreen(sourcePixel.getGreen());
             }
 
@@ -1468,42 +1463,83 @@ public class Picture extends SimplePicture {
                 value = sourcePixel.getBlue();
                 value = (int) (value * blueFact);
                 sourcePixel.setBlue(value);
-            }
-            else{
+            } else {
                 sourcePixel.setBlue(sourcePixel.getBlue());
             }
             index = index + 1;
         }
-    return this;
+        return this;
     }
-    
+
     // This method will compute and plot the histogram of the Input Image.
     // author : saim_rasheed@hotmail.com    
-    
-    public int[] myHistogram(){
-        
+    public int[] myHistogram() {
+
         this.grayscale();
-        int [] histArray = new int[256];
-        
+        int[] histArray = new int[256];
+
         Pixel sourcepixel = null;
         int val = 0;
-        
-        for (int Sx = 0 ; Sx < this.getWidth() ; Sx++){
-            for (int Sy = 0 ; Sy < this.getHeight() ; Sy++){
+
+        for (int Sx = 0; Sx < this.getWidth(); Sx++) {
+            for (int Sy = 0; Sy < this.getHeight(); Sy++) {
                 sourcepixel = this.getPixel(Sx, Sy);
                 val = sourcepixel.getGreen();
                 histArray[val] = histArray[val] + 1;
             }
         }
-        
+
         return histArray;
     }
-   
-    
-   public static void main(String[] args) {
+
+    /**
+     * Method to create a flower collage
+     */
+    public void createCollage() {
+
+        // create the flower pictures
+        Picture flower1Picture
+                = new Picture(FileChooser.pickAFile());
+        Picture flower2Picture
+                = new Picture(FileChooser.pickAFile());
+        int end1X = flower1Picture.getWidth();
+        int end2X = flower2Picture.getWidth();
+        int end1Y = flower1Picture.getHeight();
+        int end2Y = flower2Picture.getHeight();
+
+        // copy the first flower picture to the
+        // top left corner of the canvas
+        this.copy(flower1Picture, 0, 0, end1X, end1Y,
+                0, 0);
+
+        /* copy the flower2 picture starting with 
+    * x = 100 in the canvas
+         */
+        this.copy(flower2Picture, 0, 0, end2X, end2Y,
+                100, 0);
+
+        // copy the flower1 negated to x = 200 in the canvas
+        flower1Picture.negate();
+        this.copy(flower1Picture, 0, 0, end1X, end1Y,
+                200, 0);
+
+        /* clear the blue in flower 2 picture and 
+    * add at x=300 in the canvas
+         */
+        this.copy(flower2Picture, 0, 0, end2X, end2Y,
+                300, 0);
+
+        // copy the negated flower 1 to x=400
+        this.copy(flower1Picture, 0, 0, end1X, end1Y,
+                400, 0);
+
+        this.mirrorAllHorizontal();
+    }
+
+    public static void main(String[] args) {
         String fileName = FileChooser.pickAFile();
         Picture picture = new Picture(fileName);
-     //picture.blendPictures();
+        //picture.blendPictures();
         //  picture.show();
 
         System.out.print(Picture.imageHistogram(picture));
@@ -1514,6 +1550,6 @@ public class Picture extends SimplePicture {
 //        p.repaint();
 //        // p.show();
     }
-    
+
 } // end of class Picture, put all new methods before this
- 
+
