@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package photoshop380;
+
 import cpit380practice.*;
 
 import java.awt.Color;
@@ -15,7 +16,7 @@ import jdk.internal.org.objectweb.asm.tree.analysis.Value;
  * @author ia7ma
  */
 public class PictureUI extends javax.swing.JFrame {
-    
+
     String fileName;
     Picture pic;
     ImageIcon icon;
@@ -23,16 +24,17 @@ public class PictureUI extends javax.swing.JFrame {
     int ScropY;
     int EcropX;
     int EcropY;
+
     /**
      * Creates new form Picture
      */
-    
+
     public PictureUI() {
         initComponents();
         fileName = null;
         icon = null;
         pic = null;
-        
+
         redSlider.enable(false);
         greenSlider.enable(false);
         blueSlider.enable(false);
@@ -80,6 +82,10 @@ public class PictureUI extends javax.swing.JFrame {
         D2reflection = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         HistogramBtn = new javax.swing.JButton();
@@ -430,21 +436,59 @@ public class PictureUI extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Scaling");
 
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Scale up");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Scale down");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(160, Short.MAX_VALUE)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(148, 148, 148))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                    .addComponent(jTextField1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(jTextField1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jPanel9.setBackground(new java.awt.Color(153, 153, 153));
@@ -540,7 +584,7 @@ public class PictureUI extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(MaxFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGap(0, 6, Short.MAX_VALUE)
+                        .addGap(0, 3, Short.MAX_VALUE)
                         .addComponent(Gaussian, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -549,7 +593,7 @@ public class PictureUI extends javax.swing.JFrame {
                         .addGap(2, 2, 2))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(Laplacian, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(BoxFilter, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
@@ -723,7 +767,7 @@ public class PictureUI extends javax.swing.JFrame {
                     .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 33, Short.MAX_VALUE))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -738,8 +782,9 @@ public class PictureUI extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -748,13 +793,13 @@ public class PictureUI extends javax.swing.JFrame {
     private void BrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BrowseActionPerformed
         // TODO add your handling code here:
         fileName = FileChooser.pickAFile();
-        if(fileName != null){
+        if (fileName != null) {
             pic = new Picture(fileName);
             redSlider.enable(true);
             greenSlider.enable(true);
             blueSlider.enable(true);
             reset();
-            
+
         }
     }//GEN-LAST:event_BrowseActionPerformed
 
@@ -764,7 +809,7 @@ public class PictureUI extends javax.swing.JFrame {
         icon = new ImageIcon(pic.getImage());
         reset();
     }//GEN-LAST:event_ResetActionPerformed
-public void reset(){
+    public void reset() {
         redSlider.setValue(100);
         greenSlider.setValue(100);
         blueSlider.setValue(100);
@@ -772,23 +817,23 @@ public void reset(){
         greenLabel.setText("1.0");
         blueLabel.setText("1.0");
         pic = new Picture(fileName);
-        
+
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
-}
+    }
     private void redSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_redSliderStateChanged
         // TODO add your handling code here:
-        Pixel [] pixels = pic.getPixels();
+        Pixel[] pixels = pic.getPixels();
         double percent = (redSlider.getValue() / 100.0);
-        
-        for(Pixel pixel : pixels){
-            int color =(int)(pixel.getRed() * percent);
+
+        for (Pixel pixel : pixels) {
+            int color = (int) (pixel.getRed() * percent);
             if (color > 255) {
                 pixel.setRed(255);
             } else if (color < 0) {
                 pixel.setRed(2);
             } else {
-                pixel.setRed((int)color);
+                pixel.setRed((int) color);
             }
         }
         icon = new ImageIcon(pic.getImage());
@@ -798,16 +843,16 @@ public void reset(){
 
     private void greenSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_greenSliderStateChanged
         // TODO add your handling code here:
-        Pixel [] pixels = pic.getPixels();
+        Pixel[] pixels = pic.getPixels();
         double percent = (greenSlider.getValue() / 100.0);
-        for(Pixel pixel : pixels){
-            int color = (int) (percent *  pixel.getGreen());
+        for (Pixel pixel : pixels) {
+            int color = (int) (percent * pixel.getGreen());
             if (color > 255) {
                 pixel.setGreen(255);
             } else if (color < 0) {
                 pixel.setGreen(2);
             } else {
-                pixel.setGreen((int)color);
+                pixel.setGreen((int) color);
             }
         }
         icon = new ImageIcon(pic.getImage());
@@ -817,16 +862,16 @@ public void reset(){
     }//GEN-LAST:event_greenSliderStateChanged
     private void blueSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_blueSliderStateChanged
         // TODO add your handling code here:
-        Pixel [] pixels = pic.getPixels();
-        double percent = (blueSlider.getValue() / 100.0) ;
-        for(Pixel pixel : pixels){
-            int color =(int) (percent *  pixel.getBlue());
+        Pixel[] pixels = pic.getPixels();
+        double percent = (blueSlider.getValue() / 100.0);
+        for (Pixel pixel : pixels) {
+            int color = (int) (percent * pixel.getBlue());
             if (color > 255) {
                 pixel.setBlue(255);
             } else if (color < 0) {
                 pixel.setBlue(2);
             } else {
-                pixel.setBlue((int)color);
+                pixel.setBlue((int) color);
             }
         }
         icon = new ImageIcon(pic.getImage());
@@ -837,31 +882,32 @@ public void reset(){
 
     private void picViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_picViewMouseClicked
         // TODO add your handling code here:
-     
+
     }//GEN-LAST:event_picViewMouseClicked
 
     private void picViewMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_picViewMouseReleased
         // TODO add your handling code here:
-        
-        EcropX =   evt.getX() - ((503 - pic.getWidth())/2); // we apply this formula to selecting the pic pixels correctly.
-        EcropY =  evt.getY() - ((500 - pic.getHeight())/2);
+
+        EcropX = evt.getX() - ((503 - pic.getWidth()) / 2); // we apply this formula to selecting the pic pixels correctly.
+        EcropY = evt.getY() - ((500 - pic.getHeight()) / 2);
         // if he crop the picture in reverse.
         replaceStartPoint();
-        
-        Pixel [] pixels = pic.getPixels();
-        for(Pixel pixel : pixels){
+
+        Pixel[] pixels = pic.getPixels();
+        for (Pixel pixel : pixels) {
             // if the pixel not in the range that the user choose to crop it, so it will be repainted to white.
-            if(!inRange(pixel))
-                    pixel.setColor(new Color(51,51,51));
-                }
+            if (!inRange(pixel)) {
+                pixel.setColor(new Color(51, 51, 51));
+            }
+        }
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
     }//GEN-LAST:event_picViewMouseReleased
 
     private void picViewMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_picViewMousePressed
         // TODO add your handling code here:
-        ScropX = evt.getX() - ((503 - pic.getWidth())/2) ;
-        ScropY = evt.getY() - ((500 - pic.getHeight())/2);
+        ScropX = evt.getX() - ((503 - pic.getWidth()) / 2);
+        ScropY = evt.getY() - ((500 - pic.getHeight()) / 2);
         System.out.println("we here");
     }//GEN-LAST:event_picViewMousePressed
 
@@ -873,17 +919,17 @@ public void reset(){
     }//GEN-LAST:event_grayScaleActionPerformed
 
     private void rotate90LeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rotate90LeftActionPerformed
-           Picture target = new Picture(pic.getHeight(),pic.getWidth());
-           Pixel sourcePixel = null;
-           Pixel targetPixel = null;
+        Picture target = new Picture(pic.getHeight(), pic.getWidth());
+        Pixel sourcePixel = null;
+        Pixel targetPixel = null;
 
-           for (int sourceX = 0;sourceX < pic.getWidth();sourceX++) {
-               for (int sourceY = 0;sourceY < pic.getHeight();sourceY++) {
-                   sourcePixel = pic.getPixel(sourceX, sourceY);
-                   targetPixel = target.getPixel(sourceY,pic.getWidth() - 1 - sourceX);
-                   targetPixel.setColor(sourcePixel.getColor());
-               }
-           }
+        for (int sourceX = 0; sourceX < pic.getWidth(); sourceX++) {
+            for (int sourceY = 0; sourceY < pic.getHeight(); sourceY++) {
+                sourcePixel = pic.getPixel(sourceX, sourceY);
+                targetPixel = target.getPixel(sourceY, pic.getWidth() - 1 - sourceX);
+                targetPixel.setColor(sourcePixel.getColor());
+            }
+        }
         pic = target;
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
@@ -894,8 +940,8 @@ public void reset(){
         Picture newPic = new Picture(pic);
         Pixel sourcPixel = null;
         Pixel targetPixel = null;
-        
-        for (int x = 0; x < pic.getWidth()/2; x++) {
+
+        for (int x = 0; x < pic.getWidth() / 2; x++) {
             for (int y = 0; y < pic.getHeight(); y++) {
                 sourcPixel = pic.getPixel(x, y);
                 targetPixel = newPic.getPixel(pic.getWidth() - x - 1, y);
@@ -905,7 +951,7 @@ public void reset(){
         pic = newPic;
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
-        
+
     }//GEN-LAST:event_horizantalReflictionActionPerformed
 
     private void verticalReflictionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verticalReflictionActionPerformed
@@ -913,9 +959,9 @@ public void reset(){
         Picture newPic = new Picture(pic);
         Pixel sourcPixel = null;
         Pixel targetPixel = null;
-        
+
         for (int x = 0; x < pic.getWidth(); x++) {
-            for (int y = 0; y < pic.getHeight()/2; y++) {
+            for (int y = 0; y < pic.getHeight() / 2; y++) {
                 sourcPixel = pic.getPixel(x, y);
                 targetPixel = newPic.getPixel(x, pic.getHeight() - y - 1);
                 targetPixel.setColor(sourcPixel.getColor());
@@ -924,20 +970,20 @@ public void reset(){
         pic = newPic;
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
-        
+
     }//GEN-LAST:event_verticalReflictionActionPerformed
 
     private void D1reflictionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D1reflictionActionPerformed
         // TODO add your handling code here:
         int size = cropEqually();
-        Pixel [] pixels = pic.getPixels();
-        Picture newPic =  new Picture(pic);
+        Pixel[] pixels = pic.getPixels();
+        Picture newPic = new Picture(pic);
         Pixel sourcePixel = null;
         Pixel targetPixel = null;
-        
+
         for (int x = 0; x < size; x++) {
             for (int y = 0; y < size; y++) {
-                if(x > y){
+                if (x > y) {
                     sourcePixel = pic.getPixel(x, y);
                     targetPixel = newPic.getPixel(y, x);
                     targetPixel.setColor(sourcePixel.getColor());
@@ -947,20 +993,20 @@ public void reset(){
         pic = newPic;
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
-        
+
     }//GEN-LAST:event_D1reflictionActionPerformed
 
     private void D2reflectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D2reflectionActionPerformed
         // TODO add your handling code here:
-        
+
         int size = cropEqually();
-        Pixel [] pixels = pic.getPixels();
+        Pixel[] pixels = pic.getPixels();
         Pixel source = null;
         Pixel target = null;
         Picture newPic = new Picture(pic);
         for (int x = 0; x < size; x++) {
             for (int y = 0; y < size; y++) {
-                if((x+y) > size){
+                if ((x + y) > size) {
                     source = pic.getPixel(x, y);
                     target = newPic.getPixel(size - y - 1, size - x - 1);
                     target.setColor(source.getColor());
@@ -970,15 +1016,15 @@ public void reset(){
         pic = newPic;
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
-        
+
     }//GEN-LAST:event_D2reflectionActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here: // rotate 90 right
-        Picture target = new Picture(pic.getHeight(),pic.getWidth());
+        Picture target = new Picture(pic.getHeight(), pic.getWidth());
         Pixel sourcePixle = null;
         Pixel targetPixle = null;
-        
+
         for (int x = 0; x < pic.getWidth(); x++) {
             for (int y = 0; y < pic.getHeight(); y++) {
                 sourcePixle = pic.getPixel(x, y);
@@ -986,7 +1032,7 @@ public void reset(){
                 targetPixle.setColor(sourcePixle.getColor());
             }
         }
-        
+
         pic = target;
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
@@ -1004,35 +1050,35 @@ public void reset(){
                 targetPixel.setColor(sourcePixel.getColor());
             }
         }
-        
+
         pic = target;
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void HistogramBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HistogramBtnActionPerformed
         // TODO add your handling code here:
-        
-        int [] red = new int [256];
-        int [] green = new int [256];
-        int [] blue = new int [256];
-        
-        Pixel [] pixels = pic.getPixels();
-        
-        for(Pixel pixel: pixels){
+
+        int[] red = new int[256];
+        int[] green = new int[256];
+        int[] blue = new int[256];
+
+        Pixel[] pixels = pic.getPixels();
+
+        for (Pixel pixel : pixels) {
             red[pixel.getRed()]++;
             green[pixel.getGreen()]++;
             blue[pixel.getBlue()]++;
         }
         drawHistogram(red, green, blue);
-        
-        
+
+
     }//GEN-LAST:event_HistogramBtnActionPerformed
 
     private void GaussianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GaussianActionPerformed
         // TODO add your handling code here:
-        
+
         pic.GaussianFilter3x3();
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
@@ -1075,14 +1121,14 @@ public void reset(){
 
     private void BinaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BinaryActionPerformed
         // TODO add your handling code here:
-        
+
         pic.grayscale();
-        Pixel [] pixels = pic.getPixels();
+        Pixel[] pixels = pic.getPixels();
         int intensety = 0;
-        for(Pixel pixel : pixels){
-            if(pixel.getRed() >= 128){
+        for (Pixel pixel : pixels) {
+            if (pixel.getRed() >= 128) {
                 intensety = 255;
-            }else{
+            } else {
                 intensety = 0;
             }
             pixel.setRed(intensety);
@@ -1091,29 +1137,50 @@ public void reset(){
         }
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
-        
+
     }//GEN-LAST:event_BinaryActionPerformed
 
     private void EdgeDetectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EdgeDetectionActionPerformed
         // TODO add your handling code here:
         int num = Integer.parseInt(Persentage.getText());
-        
+
         pic.edgeDetection(num);
         icon = new ImageIcon(pic.getImage());
         picView.setIcon(icon);
-       // pic.edgeDetection(num);
+        // pic.edgeDetection(num);
     }//GEN-LAST:event_EdgeDetectionActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        int numOfTimes = Integer.parseInt(jTextField1.getText());
+        pic = pic.scaleUp(numOfTimes);
+        icon = new ImageIcon(pic.getImage());
+        picView.setIcon(icon);
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        int numOfTimes = Integer.parseInt(jTextField2.getText());
+        pic = pic.scaleDown(numOfTimes);
+        icon = new ImageIcon(pic.getImage());
+        picView.setIcon(icon);
+    }//GEN-LAST:event_jButton4ActionPerformed
     /**
      * @param args the command line arguments
      */
-    
-    private void drawHistogram(int [] red, int [] green, int [] blue){
-        
-       new HistogramFrame(red, green, blue).setVisible(true);
-        
+
+    private void drawHistogram(int[] red, int[] green, int[] blue) {
+
+        new HistogramFrame(red, green, blue).setVisible(true);
+
     }
-    
-    private int cropEqually(){
+
+    private int cropEqually() {
         // we cannot do the Diagnol refliction without croping the Picture equally.
         int width = pic.getWidth();
         int height = pic.getHeight();
@@ -1121,20 +1188,21 @@ public void reset(){
         Pixel target = null;
         Picture newPic = null;
         int size = width > height ? height : width;
-            newPic = new Picture(size, size);
-            Pixel [] pixels = pic.getPixels();
-            for (int x = 0; x < size; x++) {
-                for (int y = 0; y < size; y++) {
-                    source = pic.getPixel(x, y);
-                    target = newPic.getPixel(x, y);
-                    target.setColor(source.getColor());
-                }
+        newPic = new Picture(size, size);
+        Pixel[] pixels = pic.getPixels();
+        for (int x = 0; x < size; x++) {
+            for (int y = 0; y < size; y++) {
+                source = pic.getPixel(x, y);
+                target = newPic.getPixel(x, y);
+                target.setColor(source.getColor());
             }
+        }
         pic = newPic;
         icon = new ImageIcon(newPic.getImage());
         picView.setIcon(icon);
         return size;
     }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1166,48 +1234,52 @@ public void reset(){
             }
         });
     }
-    public int getAverageRed(){
+
+    public int getAverageRed() {
         int total = 0;
-        Pixel [] pixels = pic.getPixels();
-        for (Pixel pixel: pixels){
+        Pixel[] pixels = pic.getPixels();
+        for (Pixel pixel : pixels) {
             total += pixel.getRed();
         }
         return total / pixels.length;
-    }public int getAverageGreen(){
+    }
+
+    public int getAverageGreen() {
         int total = 0;
-        Pixel [] pixels = pic.getPixels();
-        for (Pixel pixel: pixels){
+        Pixel[] pixels = pic.getPixels();
+        for (Pixel pixel : pixels) {
             total += pixel.getGreen();
         }
         return total / pixels.length;
-    }    
-    public int getAverageBlue(){
+    }
+
+    public int getAverageBlue() {
         int total = 0;
-        Pixel [] pixels = pic.getPixels();
-        for (Pixel pixel: pixels){
+        Pixel[] pixels = pic.getPixels();
+        for (Pixel pixel : pixels) {
             total += pixel.getBlue();
         }
         return total / pixels.length;
-    }  
-    
-    
-        public void replaceStartPoint(){
+    }
+
+    public void replaceStartPoint() {
         int temp = 0;
-        if(ScropX > EcropX)
-        {
+        if (ScropX > EcropX) {
             temp = ScropX;
             ScropX = EcropX;
             EcropX = temp;
         }
-        if(ScropY > EcropY){
+        if (ScropY > EcropY) {
             temp = ScropY;
             ScropY = EcropY;
             EcropY = temp;
         }
     }
-    public boolean inRange(Pixel pixel){
-        if(pixel.getX() >= ScropX && pixel.getX() <= EcropX && pixel.getY() >= ScropY && pixel.getY() <= EcropY)
+
+    public boolean inRange(Pixel pixel) {
+        if (pixel.getX() >= ScropX && pixel.getX() <= EcropX && pixel.getY() >= ScropY && pixel.getY() <= EcropY) {
             return true;
+        }
         return false;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1233,6 +1305,8 @@ public void reset(){
     private javax.swing.JButton horizantalRefliction;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1259,6 +1333,8 @@ public void reset(){
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel picView;
     private javax.swing.JLabel redLabel;
     private javax.swing.JSlider redSlider;
