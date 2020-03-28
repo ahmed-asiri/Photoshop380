@@ -24,7 +24,7 @@ public class PictureUI extends javax.swing.JFrame {
     int ScropY;
     int EcropX;
     int EcropY;
-
+    boolean crop = false;
     /**
      * Creates new form Picture
      */
@@ -69,6 +69,7 @@ public class PictureUI extends javax.swing.JFrame {
         Browse = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         grayScale = new javax.swing.JButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
         jPanel6 = new javax.swing.JPanel();
         rotate90Left = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -297,20 +298,31 @@ public class PictureUI extends javax.swing.JFrame {
             }
         });
 
+        jToggleButton1.setText("Crop");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(66, 66, 66)
                 .addComponent(grayScale, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(146, 146, 146))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(grayScale, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(grayScale, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -595,7 +607,7 @@ public class PictureUI extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(MaxFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGap(0, 6, Short.MAX_VALUE)
+                        .addGap(0, 3, Short.MAX_VALUE)
                         .addComponent(Gaussian, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -604,7 +616,7 @@ public class PictureUI extends javax.swing.JFrame {
                         .addGap(2, 2, 2))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(Laplacian, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(BoxFilter, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
@@ -1026,7 +1038,8 @@ public class PictureUI extends javax.swing.JFrame {
 
     private void picViewMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_picViewMouseReleased
         // TODO add your handling code here:
-
+        if(!crop)
+            return;
         EcropX = evt.getX() - ((503 - pic.getWidth()) / 2); // we apply this formula to selecting the pic pixels correctly.
         EcropY = evt.getY() - ((500 - pic.getHeight()) / 2);
         // if he crop the picture in reverse.
@@ -1045,6 +1058,8 @@ public class PictureUI extends javax.swing.JFrame {
 
     private void picViewMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_picViewMousePressed
         // TODO add your handling code here:
+        if(!crop)
+            return;
         ScropX = evt.getX() - ((503 - pic.getWidth()) / 2);
         ScropY = evt.getY() - ((500 - pic.getHeight()) / 2);
         System.out.println("we here");
@@ -1345,6 +1360,14 @@ public class PictureUI extends javax.swing.JFrame {
         picView.setIcon(icon);
         
     }//GEN-LAST:event_BackgroundSubtractionActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // TODO add your handling code here:
+        if(jToggleButton1.isSelected())
+            crop = true;
+        else
+            crop = false;
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -1521,6 +1544,7 @@ public class PictureUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel picView;
     private javax.swing.JLabel redLabel;
     private javax.swing.JSlider redSlider;
