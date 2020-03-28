@@ -1294,8 +1294,7 @@ public class Picture extends SimplePicture {
         }
     }
 
-    public void removeRedEye(int startX, int startY, int endX,
-            int endY, Color newColor) {
+    public void removeRedEye(int startX, int startY, int endX,int endY, Color newColor) {
         Pixel pixel = null;
         /* loop through the pixels in the rectangle defined by the
          startX, startY, and endX and endY */
@@ -1534,6 +1533,18 @@ public class Picture extends SimplePicture {
                 400, 0);
 
         this.mirrorAllHorizontal();
+    }
+    
+    public void RemoveRedEye(int threshold, int Sx, int Sy, int Ex, int Ey) {
+
+        for (int x = Sx; x < Ex; x++) {
+            for (int y = Sy; y < Ey; y++) {
+
+                if (this.getPixel(x, y).colorDistance(Color.red) < threshold) {
+                    this.getPixel(x, y).setColor(Color.black);
+                }
+            }
+        }
     }
 
     public static void main(String[] args) {
