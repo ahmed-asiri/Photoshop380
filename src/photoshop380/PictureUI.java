@@ -721,23 +721,22 @@ public class PictureUI extends javax.swing.JFrame {
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                         .addComponent(EdgeDetection)
-                        .addGap(133, 133, 133))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel13Layout.createSequentialGroup()
-                            .addComponent(jLabel12)
-                            .addGap(18, 18, 18)
-                            .addComponent(Persentage, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel13)
-                            .addContainerGap())
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                            .addComponent(jLabel15)
-                            .addGap(125, 125, 125)))))
+                        .addGap(8, 8, 8))
+                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(133, 133, 133))
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(153, 153, 153)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Persentage, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel13)
+                .addContainerGap(126, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -746,7 +745,7 @@ public class PictureUI extends javax.swing.JFrame {
                     .addComponent(jLabel13))
                 .addGap(20, 20, 20)
                 .addComponent(EdgeDetection)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jPanel12.setBackground(new java.awt.Color(153, 153, 153));
@@ -841,7 +840,7 @@ public class PictureUI extends javax.swing.JFrame {
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
-                .addContainerGap(137, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
                         .addComponent(jLabel16)
@@ -963,8 +962,7 @@ public class PictureUI extends javax.swing.JFrame {
 
     private void ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetActionPerformed
         // TODO add your handling code here:
-        pic = new Picture(fileName);
-        icon = new ImageIcon(pic.getImage());
+
         reset();
     }//GEN-LAST:event_ResetActionPerformed
     public void reset() {
@@ -1281,8 +1279,8 @@ public class PictureUI extends javax.swing.JFrame {
         Picture newPic;
         try{
             int filterSize = Integer.parseInt(dynamicFilter.getText());
-            if(filterSize <= 0){
-                JOptionPane.showMessageDialog(this, "Cannot accept negitave numbers or zero.");
+            if(filterSize <= 1){
+                JOptionPane.showMessageDialog(this, "Cannot accept negitave numbers or numbers less than one.");
             }else if(filterSize % 2 == 0){
                 JOptionPane.showMessageDialog(this, "Please enter odd number only");
                 return;
@@ -1296,15 +1294,15 @@ public class PictureUI extends javax.swing.JFrame {
                     for (int y = (neihPoint); y < h - (neihPoint+1); y++) {
                         
                         int sum = 0;
-                        for (int i = -1; i <= 1; i++) {
-                            for (int j = -1; j <= 1; j++) {
+                        for (int i = -neihPoint; i <= neihPoint; i++) {
+                            for (int j = -neihPoint; j <= neihPoint; j++) {
                                 int intensty = pic.getPixel(x+i, y+j).getRed();
                                 sum += intensty;
                             }
                         }
                         // new intensity for the target image
                         
-                        int newIntensity = (int) Math.round(sum/9);
+                        int newIntensity = (int) Math.round(sum/(filterSize*filterSize));
                         newPic.getPixel(x, y).setColor(new Color(newIntensity, newIntensity, newIntensity));
                         
                     }
