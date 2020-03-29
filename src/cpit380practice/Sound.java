@@ -2019,7 +2019,7 @@ public class Sound extends SimpleSound {
 //  }
     public Sound splice(double zone) {
         Sound sound1
-                = new Sound(FileChooser.pickAFile());
+                = new Sound(this);
         Sound sound2
                 = new Sound(FileChooser.pickAFile());
         int targetIndex = 0; // the starting place on the target
@@ -2079,6 +2079,75 @@ public class Sound extends SimpleSound {
             s.setSampleValueAt(targetIndex, value);
         }
         return s;
+    }
+    
+    public Sound blendingSounds() {
+        Sound sound1 = new Sound(this);
+        Sound sound2 = new Sound(FileChooser.pickAFile());
+        Sound target;
+        int value = 0;
+        if (sound1.getLength() > sound2.getLength()) {
+            target = new Sound(sound1.getLength());
+        } else {
+            target = new Sound(sound2.getLength());
+        }
+
+        // copy the first half of sound1 into target
+        for (int index = 0; index < sound1.getLength() / 2; index++) {
+            target.setSampleValueAt(index, sound1.getSampleValueAt(index));
+        }
+
+        // copy the rest of sound1 and blend that
+        // with the first part of sound2
+        int sound2Index = 0;
+        for (int index = sound1.getLength() / 2; index < sound1.getLength() && sound2Index < sound2.getLength() / 2; index++, sound2Index++) {
+            value = (int) ((sound1.getSampleValueAt(index) * 0.5) + (sound2.getSampleValueAt(sound2Index) * 0.5));
+            target.setSampleValueAt(index, value);
+        }
+
+        // copy the rest of sound2 into the target
+        for (int i = sound1.getLength(); i < target.getLength() && sound2Index < sound2.getLength(); i++, sound2Index++) {
+            target.setSampleValueAt(i, sound2.getSampleValueAt(sound2Index));
+        }
+        while (true) {
+            int reply = JOptionPane.showConfirmDialog(null, "Do you want to blend an another sound ?", "Attention!", JOptionPane.YES_NO_OPTION);
+            if (reply == JOptionPane.YES_OPTION) {
+                target = blendAnother(target, sound2Index);
+            } else {
+                break;
+            }
+        }
+        return target;
+    }
+
+    public Sound blendAnother(Sound target, int soundIndx) {
+        Sound sound1 = new Sound(target);
+        Sound sound2 = new Sound(FileChooser.pickAFile());
+        int value = 0;
+        if (sound1.getLength() > sound2.getLength()) {
+            target = new Sound(sound1.getLength());
+        } else {
+            target = new Sound(sound2.getLength());
+        }
+
+        // copy the first half of sound1 into target
+        for (int index = 0; index < sound1.getLength() / 2; index++) {
+            target.setSampleValueAt(index, sound1.getSampleValueAt(index));
+        }
+
+        // copy the rest of sound1 and blend that
+        // with the first part of sound2
+        int sound2Index = 0;
+        for (int index = sound1.getLength() / 2; index < sound1.getLength() && sound2Index < sound2.getLength() / 2; index++, sound2Index++) {
+            value = (int) ((sound1.getSampleValueAt(index) * 0.5) + (sound2.getSampleValueAt(sound2Index) * 0.5));
+            target.setSampleValueAt(index, value);
+        }
+
+        // copy the rest of sound2 into the target
+        for (int i = sound1.getLength(); i < target.getLength() && sound2Index < sound2.getLength(); i++, sound2Index++) {
+            target.setSampleValueAt(i, sound2.getSampleValueAt(sound2Index));
+        }
+        return target;
     }
 
 } // end of class Sound, put all new methods before this
