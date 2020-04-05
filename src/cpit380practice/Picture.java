@@ -1546,6 +1546,57 @@ public class Picture extends SimplePicture {
             }
         }
     }
+    
+     public double Brightness() {
+        Pixel[] pixelArray = this.getPixels();
+        double PixelsInstenses = 0;
+        double brightness = 0.0;
+
+        // loop through all the pixels
+        for (Pixel currntPixel : pixelArray) {
+            PixelsInstenses += currntPixel.getAverage();
+
+        }
+        brightness = PixelsInstenses / pixelArray.length;
+        return brightness;
+    }
+     
+     public double Contrast() {
+         int[] Array = new int[256];
+
+        for (int H = 0; H < this.getHeight(); H++) {
+            for (int W = 0; W < this.getWidth(); W++) {
+                Pixel pixel = this.getPixel(W, H);
+                int average = (int) pixel.getAverage();
+                Array[average]++;
+            }
+        }
+
+        int max = 0;
+        int min = 1;
+
+        for (int i = 0; i < Array.length; i++) {
+            if (Array[i] > max) {
+                max = Array[i];
+            }
+        }
+
+        for (int j = 0; j < Array.length; j++) {
+            if (Array[j] < min && Array[j] != 0) {
+                min = Array[j];
+            }
+        }
+
+        
+        double contrast = (double)(max - min) / (double)(max + min);
+        
+        return contrast;
+     }
+     
+     
+     
+     
+     
 
     public static void main(String[] args) {
         String fileName = FileChooser.pickAFile();
