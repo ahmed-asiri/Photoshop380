@@ -718,6 +718,46 @@ public class Picture extends SimplePicture {
 
     }
 
+    public Picture ourScaleDown(int w, int h, int numTimes) {
+        Picture targetPicture = new Picture(w / numTimes + 1, h / numTimes + 1);
+        Pixel sourcePixel = null;
+        Pixel targetPixel = null;
+        for (int sourceX = 0, targetX = 0;
+                sourceX < w;
+                sourceX += numTimes, targetX++) {
+            for (int sourceY = 0, targetY = 0; sourceY < h; sourceY += numTimes, targetY++) {
+                sourcePixel = this.getPixel(sourceX, sourceY);
+                targetPixel = targetPicture.getPixel(targetX, targetY);
+                targetPixel.setColor(sourcePixel.getColor());
+            }
+        }
+        return targetPicture;
+
+    }
+
+    public Picture ourScaleUp(int w, int h, int numTimes) {
+        Picture targetPicture = new Picture(w * numTimes, h * numTimes);
+        Pixel sourcePixel;
+        Pixel targetPixel;
+        int targetX = 0;
+        int targetY = 0;
+
+        for (int sourceX = 0; sourceX < w; sourceX++) {
+            for (int sourceY = 0; sourceY < h; sourceY++) {
+                sourcePixel = this.getPixel(sourceX, sourceY);
+                for (int indexY = 0; indexY < numTimes; indexY++) {
+                    for (int indexX = 0; indexX < numTimes; indexX++) {
+                        targetX = sourceX * numTimes + indexX;
+                        targetY = sourceY * numTimes + indexY;
+                        targetPixel = targetPicture.getPixel(targetX, targetY);
+                        targetPixel.setColor(sourcePixel.getColor());
+                    }
+                }
+            }
+        }
+        return targetPicture;
+    }
+
     public Picture scaleDown(int numTimes) {
         System.out.println("ok1");
         Picture targetPicture
@@ -781,6 +821,16 @@ public class Picture extends SimplePicture {
                 pixel.setColor(color);
             }
         }
+    }
+
+    public int[] ourComputingHistogram() {
+
+        int[] histo = new int[256]; 
+        for(Pixel pixel: this.getPixels()) {
+            int i = (int) pixel.getAverage();
+            histo[i]++;
+            }
+        return histo;
     }
 
     public void makeSunset() {
@@ -1294,7 +1344,7 @@ public class Picture extends SimplePicture {
         }
     }
 
-    public void removeRedEye(int startX, int startY, int endX,int endY, Color newColor) {
+    public void removeRedEye(int startX, int startY, int endX, int endY, Color newColor) {
         Pixel pixel = null;
         /* loop through the pixels in the rectangle defined by the
          startX, startY, and endX and endY */
@@ -1534,7 +1584,7 @@ public class Picture extends SimplePicture {
 
         this.mirrorAllHorizontal();
     }
-    
+
     public void RemoveRedEye(int threshold, int Sx, int Sy, int Ex, int Ey) {
 
         for (int x = Sx; x < Ex; x++) {
@@ -1546,8 +1596,8 @@ public class Picture extends SimplePicture {
             }
         }
     }
-    
-     public double Brightness() {
+
+    public double Brightness() {
         Pixel[] pixelArray = this.getPixels();
         double PixelsInstenses = 0;
         double brightness = 0.0;
@@ -1560,9 +1610,9 @@ public class Picture extends SimplePicture {
         brightness = PixelsInstenses / pixelArray.length;
         return brightness;
     }
-     
-     public double Contrast() {
-         int[] Array = new int[256];
+
+    public double Contrast() {
+        int[] Array = new int[256];
 
         for (int H = 0; H < this.getHeight(); H++) {
             for (int W = 0; W < this.getWidth(); W++) {
@@ -1587,16 +1637,10 @@ public class Picture extends SimplePicture {
             }
         }
 
-        
-        double contrast = (double)(max - min) / (double)(max + min);
-        
+        double contrast = (double) (max - min) / (double) (max + min);
+
         return contrast;
-     }
-     
-     
-     
-     
-     
+    }
 
     public static void main(String[] args) {
         String fileName = FileChooser.pickAFile();
