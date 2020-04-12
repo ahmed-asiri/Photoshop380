@@ -3,7 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/Users/abdulrhmanjo/Desktop/Photoshop380/src/photoshop380/MainPage.java</file>
+=======
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Photoshop380/src/photoshop380/PictureUI.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Photoshop380/src/cpit380practice/Pixel.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Photoshop380/src/cpit380practice/Picture1.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Photoshop380/src/photoshop380/MainPage.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Photoshop380/src/cpit380practice/Picture.java</file>
+>>>>>>> aba8194dce243119247792a57d8a39fead25aded
         </group>
     </open-files>
 </project-private>

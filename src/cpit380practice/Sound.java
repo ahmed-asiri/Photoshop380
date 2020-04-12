@@ -2119,6 +2119,8 @@ public class Sound extends SimpleSound {
         }
         return target;
     }
+    
+    
 
     public Sound blendAnother(Sound target, int soundIndx) {
         Sound sound1 = new Sound(target);
@@ -2150,4 +2152,20 @@ public class Sound extends SimpleSound {
         return target;
     }
 
-} // end of class Sound, put all new methods before this
+ // end of class Sound, put all new methods before this
+
+
+    public Sound spread(){
+        SoundSample [] sample = this.getSamples();
+        Sound s = new Sound((int)sample.length * 2);
+
+      
+        for (double sourceIndex=0, targetIndex = 0; targetIndex < s.getLength() ; sourceIndex += 0.5, targetIndex++)
+        {
+          s.setSampleValueAt((int) targetIndex,
+                  sample[((int) sourceIndex)].getValue());
+        }
+        return s;
+        }
+
+}

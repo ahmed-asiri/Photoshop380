@@ -134,7 +134,7 @@ public class MovieMaker
     for (int i = 0; i < framesPerSec * 3; i++)
     {
       // draw the string
-      p = new Picture(300,200);
+      p = new Picture(500,200);
       g = p.getGraphics();
       g.setColor(Color.BLACK);
       g.setFont(font);
@@ -339,11 +339,33 @@ public class MovieMaker
    * Method to slowly create a sunset
    * @param directory the directory to write to
    */
-  public void makeSunsetMovie(String directory)
+  
+  
+  public void MySunset(Picture pic, String dir) {
+        
+        Pixel[] s = pic.getPixels();
+
+        int framesPerSec = 30;
+        FrameSequencer frameSequencer = new FrameSequencer(dir);
+        frameSequencer.setShown(true);
+        double count = 1.0;
+        for (int i = 0; i < framesPerSec; i++ , count+=0.01) {
+
+            for (int j = 0; j < s.length; j++) {
+                // set the red value to 1.3 times what it was
+                s[j].setRed((int) (s[j].getRed() * count));
+                
+            }
+
+            frameSequencer.addFrame(pic);
+        }
+        frameSequencer.play(framesPerSec);
+    }
+  public void makeSunsetMovie(Picture p,String directory)
   {
     // load the picture of the beach
-    String fName = FileChooser.pickAFile();
-    Picture beachP = new Picture(fName);
+    
+    Picture beachP = p;
     
     // declare other variables
     Picture target = null;
@@ -888,6 +910,9 @@ public class MovieMaker
     // play the movie
     frameSequencer.play(framesPerSec);
   }
+  
+  
+     
   
   public static void main(String[] args)
   {
