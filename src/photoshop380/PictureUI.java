@@ -9,6 +9,8 @@ import cpit380practice.*;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.InputMismatchException;
 import javax.swing.*;
 import jdk.internal.org.objectweb.asm.tree.analysis.Value;
@@ -28,7 +30,7 @@ public class PictureUI extends javax.swing.JFrame {
     int EcropX;
     int EcropY;
     boolean crop = false;
-
+    int Sx, Sy, Ex, Ey;
     /**
      * Creates new form Picture
      */
@@ -252,6 +254,7 @@ public class PictureUI extends javax.swing.JFrame {
 
         picView.setBackground(new java.awt.Color(51, 51, 51));
         picView.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        picView.setName(""); // NOI18N
         picView.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 picViewMouseClicked(evt);
@@ -269,7 +272,9 @@ public class PictureUI extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1000,7 +1005,7 @@ public class PictureUI extends javax.swing.JFrame {
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(Contrast, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(Brightness, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
@@ -1051,7 +1056,7 @@ public class PictureUI extends javax.swing.JFrame {
                     .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1068,7 +1073,7 @@ public class PictureUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -1301,8 +1306,8 @@ public class PictureUI extends javax.swing.JFrame {
         if (!crop) {
             return;
         }
-        EcropX = evt.getX() - ((503 - pic.getWidth()) / 2); // we apply this formula to selecting the pic pixels correctly.
-        EcropY = evt.getY() - ((500 - pic.getHeight()) / 2);
+        EcropX = evt.getX() - ((640 - pic.getWidth()) / 2); // we apply this formula to selecting the pic pixels correctly.
+        EcropY = evt.getY() - ((480 - pic.getHeight()) / 2);
         // if he crop the picture in reverse.
         replaceStartPoint();
 
@@ -1326,8 +1331,8 @@ public class PictureUI extends javax.swing.JFrame {
         if (!crop) {
             return;
         }
-        ScropX = evt.getX() - ((503 - pic.getWidth()) / 2);
-        ScropY = evt.getY() - ((500 - pic.getHeight()) / 2);
+        ScropX = evt.getX() - ((640 - pic.getWidth()) / 2);
+        ScropY = evt.getY() - ((480 - pic.getHeight()) / 2);
         System.out.println("we here");
     }//GEN-LAST:event_picViewMousePressed
 
@@ -1829,6 +1834,24 @@ public class PictureUI extends javax.swing.JFrame {
 
     private void picView1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_picView1MousePressed
         // TODO add your handling code here:
+                     
+//                
+//                        Sx = (int) e.getX();
+//                        Sy = (int) e.getY();
+//               
+//                   
+//                        
+//                        Ex = (int) e.getX();
+//                        Ey = (int) e.getY();
+//                       
+//                        basePic = new Picture(basePic.getWidth(),basePic.getHeight());
+//                        basePic.crop(new Picture(fileName), Sx, Sy, Ex, Ey, Sx, Sy);
+//                        
+//                        picView1.setIcon(new ImageIcon(basePic.getImage()));
+//                        
+                        
+                
+            
     }//GEN-LAST:event_picView1MousePressed
 
     private void picView1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_picView1MouseReleased
