@@ -111,6 +111,12 @@ public class SoundUI extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel1.setText("Change volume");
 
+        jSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSlider1StateChanged(evt);
+            }
+        });
+
         jLabel8.setText("Number of samples");
 
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
@@ -370,22 +376,21 @@ public class SoundUI extends javax.swing.JFrame {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(194, Short.MAX_VALUE)
+                .addComponent(jLabel13)
+                .addGap(195, 195, 195))
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addGap(180, 180, 180))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(168, 168, 168))))
+                .addGap(178, 178, 178)
+                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel13)
-                .addGap(29, 29, 29)
+                .addGap(33, 33, 33)
                 .addComponent(jButton8)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -558,16 +563,13 @@ public class SoundUI extends javax.swing.JFrame {
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
 
-        try {
-            if (sound == null) {
-                JOptionPane.showMessageDialog(this, "Browse Sound First");
-                return;
-            }
-
-            sound = ourSimpleFilter(sound, Integer.parseInt(filterValue.getText()));
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Please Select a sound first");
+        if (sound == null) {
+            JOptionPane.showMessageDialog(this, "Browse Sound First");
+            return;
         }
+
+        sound = ourSimpleFilter(sound, Integer.parseInt(filterValue.getText()));
+
 
     }//GEN-LAST:event_jButton10ActionPerformed
 
@@ -577,11 +579,9 @@ public class SoundUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Browse Sound First");
             return;
         }
-        try {
-            sound = ourWeightedFilter(sound);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Please Select a sound first");
-        }
+
+        sound = ourWeightedFilter(sound);
+
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -590,11 +590,9 @@ public class SoundUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Browse Sound First");
             return;
         }
-        try {
-            sound = sound.spread();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Please Select a sound first");
-        }
+
+        sound = sound.spread();
+
 
     }//GEN-LAST:event_jButton8ActionPerformed
 
@@ -603,6 +601,18 @@ public class SoundUI extends javax.swing.JFrame {
         new MainPage().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
+        // TODO add your handling code here:
+        
+        
+        int value = 0;
+        // loop through all the samples in the array
+        for (SoundSample sample : sound.getSamples()) {
+            value = sample.getValue();
+            sample.setValue((int) (value * jSlider1.getValue()));
+        }
+    }//GEN-LAST:event_jSlider1StateChanged
 
     /**
      * @param args the command line arguments
