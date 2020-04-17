@@ -604,8 +604,7 @@ public class SoundUI extends javax.swing.JFrame {
 
     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
         // TODO add your handling code here:
-        
-        
+
         int value = 0;
         // loop through all the samples in the array
         for (SoundSample sample : sound.getSamples()) {
